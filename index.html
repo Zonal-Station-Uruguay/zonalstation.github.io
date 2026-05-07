@@ -1,31 +1,487 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=privacy_policy.html">
-    <title>Zonal Station</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f8fafc;
-        }
-        .loader {
-            text-align: center;
-        }
-        .loader p {
-            color: #3b82f6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zonal Station — La plataforma de fútbol en Uruguay</title>
+  <meta name="description" content="Reservá canchas, armá tu equipo, participá en torneos y desafíos. Zonal Station es la app de fútbol que Uruguay estaba esperando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-glow: rgba(34,197,94,0.25);
+      --bg: #080e14;
+      --bg2: #0d1520;
+      --bg3: #111c28;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f6ff;
+      --muted: #7a8fa6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,14,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green); color: #000; padding: 9px 22px; border-radius: 50px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green); padding: 6px 16px; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 28px; animation: fadeUp 0.6s ease both;
+    }
+    .hero-badge::before { content: '⚽'; font-size: 0.9rem; }
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    h1 .accent { color: var(--green); }
+    .hero-sub {
+      max-width: 560px; margin: 24px auto 0;
+      color: var(--muted); font-size: 1.1rem; line-height: 1.7;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; margin-top: 44px; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #000; padding: 14px 32px;
+      border-radius: 50px; font-weight: 800; font-size: 1rem;
+      text-decoration: none; transition: all 0.2s;
+      box-shadow: 0 0 30px var(--green-glow);
+    }
+    .btn-primary:hover { background: #4ade80; transform: translateY(-2px); box-shadow: 0 0 50px var(--green-glow); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border); color: var(--text);
+      padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: all 0.2s; backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 72px; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--green); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 48px;
+    }
+
+    /* ─── FEATURES ─── */
+    section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      color: var(--green); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.15;
+    }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-top: 12px; max-width: 500px; }
+
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+    .feature-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      transition: all 0.3s; backdrop-filter: blur(10px);
+    }
+    .feature-card:hover {
+      border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.05);
+      transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-section {
+      padding: 100px 24px;
+      background: var(--bg2);
+    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 56px; }
+    .step { padding: 32px; position: relative; }
+    .step:not(:last-child)::after {
+      content: '→'; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%); color: var(--border); font-size: 1.5rem;
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green); color: #000;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.9rem; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+    /* ─── ROLES ─── */
+    .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+    .role-card {
+      border-radius: 24px; padding: 40px; position: relative; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .role-card.player { background: linear-gradient(135deg, #0d1a0d, #0f2d1a); }
+    .role-card.provider { background: linear-gradient(135deg, #0d1520, #0a2040); }
+    .role-card.admin { background: linear-gradient(135deg, #1a0d0d, #2d1a0d); }
+    .role-card::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04), transparent);
+    }
+    .role-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .player .role-tag { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .provider .role-tag { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .admin .role-tag { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+    .role-emoji { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+    .role-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+    .role-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .role-features { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .role-features li { font-size: 0.85rem; color: #94a3b8; display: flex; gap: 8px; align-items: flex-start; }
+    .role-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      padding: 120px 24px; text-align: center;
+      background: radial-gradient(ellipse at center, rgba(34,197,94,0.08) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1;
+    }
+    .cta-section p { color: var(--muted); font-size: 1.05rem; margin: 20px auto; max-width: 480px; line-height: 1.7; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border); padding: 48px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    .footer-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.8rem; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-stats { gap: 28px; }
+      .step::after { display: none; }
+      footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
+      section { padding: 70px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="loader">
-        <p>Redirigiendo a la Política de Privacidad...</p>
-        <p><a href="privacy_policy.html">Click aquí si no eres redirigido</a></p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="dot"></span>
+    Zonal Station
+  </div>
+  <div class="nav-links">
+    <a href="#features">Funciones</a>
+    <a href="#roles">Usuarios</a>
+    <a href="#how">Cómo funciona</a>
+  </div>
+  <a href="https://play.google.com/store" class="nav-cta" target="_blank">Descargar App</a>
+</nav>
+
+<!-- HERO -->
+<main>
+<section class="hero">
+  <div class="hero-badge">Disponible en Uruguay 🇺🇾</div>
+  <h1>El fútbol más<br />organizado de <span class="accent">Uruguay</span></h1>
+  <p class="hero-sub">Reservá canchas, desafiá equipos, participá en torneos y gestioná tu club desde una sola aplicación.</p>
+  <div class="hero-actions">
+    <a href="https://play.google.com/store" class="btn-primary" target="_blank">
+      ▶ Descargar en Google Play
+    </a>
+    <a href="#features" class="btn-secondary">
+      Ver funciones →
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">+200</div>
+      <div class="stat-label">Canchas disponibles</div>
     </div>
+    <div class="stat">
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Jugadores activos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+50</div>
+      <div class="stat-label">Torneos organizados</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="section-divider"></div>
+<section id="features">
+  <div class="section-label">Funcionalidades</div>
+  <h2 class="section-title">Todo lo que necesitás<br />para jugar y organizar</h2>
+  <p class="section-sub">Una plataforma integral pensada para jugadores, organizadores y dueños de complejos deportivos.</p>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">📅</div>
+      <h3>Reservas en Tiempo Real</h3>
+      <p>Reservá tu cancha en segundos, pagá digitalmente o en efectivo y recibí confirmación instantánea.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">⚔️</div>
+      <h3>Desafíos y Matchmaking</h3>
+      <p>Desafiá a otros equipos o encontrá rivales por nivel. El sistema de matchmaking busca el partido perfecto para vos.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🏆</div>
+      <h3>Torneos Completos</h3>
+      <p>Inscribite o creá torneos con llaves, grupos, marcadores en vivo y tabla de posiciones automática.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">👥</div>
+      <h3>Gestión de Equipos</h3>
+      <p>Creá tu equipo, invitá jugadores, definí titulares y seguí las estadísticas de victorias y fiabilidad.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">💰</div>
+      <h3>Pago Dividido</h3>
+      <p>¿No querés poner todo vos? Dividí el costo de la reserva entre todos los jugadores del partido.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🎮</div>
+      <h3>Gamificación</h3>
+      <p>Ganás badges, subís de nivel y construís tu reputación como jugador confiable y competitivo.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📍</div>
+      <h3>Mapa Interactivo</h3>
+      <p>Encontrá canchas cerca tuyo con filtros por tipo de superficie, precio y disponibilidad horaria.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">💬</div>
+      <h3>Chat por Reserva</h3>
+      <p>Coordiná con los demás jugadores directamente dentro de la app, sin salir a WhatsApp.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">⭐</div>
+      <h3>Reseñas y Calificaciones</h3>
+      <p>Calificá las canchas donde jugaste y leé opiniones reales de otros jugadores antes de reservar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<div class="how-section" id="how">
+  <div class="how-inner">
+    <div class="section-label">Proceso</div>
+    <h2 class="section-title">Del registro al partido<br />en 3 pasos</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Creá tu cuenta</h3>
+        <p>Registrate en segundos, elegí tu rol (jugador, proveedor o admin) y completá tu perfil deportivo.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Encontrá tu cancha</h3>
+        <p>Buscá en el mapa, filtrá por precio o superficie y reservá el horario que más te convenga.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>A jugar</h3>
+        <p>Invitá a tus amigos, pagá fácil y coordiná todo desde el chat de la reserva. ¡A la cancha!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROLES -->
+<section id="roles">
+  <div class="section-label">Para todos</div>
+  <h2 class="section-title">Una plataforma,<br />tres experiencias</h2>
+  <p class="section-sub">Zonal Station fue diseñado para cada actor del ecosistema futbolero uruguayo.</p>
+
+  <div class="roles-grid">
+    <div class="role-card player reveal">
+      <div class="role-tag">Jugador</div>
+      <span class="role-emoji">⚽</span>
+      <h3>Jugadores</h3>
+      <p>Para quienes quieren jugar más, mejor y con más organización.</p>
+      <ul class="role-features">
+        <li>Reservas de canchas con pago digital</li>
+        <li>Equipo con estadísticas y fiabilidad</li>
+        <li>Matchmaking y desafíos entre equipos</li>
+        <li>Historial de partidos y gamificación</li>
+        <li>Pago dividido entre jugadores</li>
+      </ul>
+    </div>
+
+    <div class="role-card provider reveal">
+      <div class="role-tag">Proveedor</div>
+      <span class="role-emoji">🏟️</span>
+      <h3>Complejos Deportivos</h3>
+      <p>Para dueños y administradores de canchas que quieren crecer digitalmente.</p>
+      <ul class="role-features">
+        <li>Dashboard de reservas en tiempo real</li>
+        <li>Gestión de canchas y horarios</li>
+        <li>Integración con Mercado Pago</li>
+        <li>Publicidad en la plataforma</li>
+        <li>Estadísticas e ingresos mensuales</li>
+      </ul>
+    </div>
+
+    <div class="role-card admin reveal">
+      <div class="role-tag">Organizador</div>
+      <span class="role-emoji">📋</span>
+      <h3>Organizadores</h3>
+      <p>Para quienes gestionan torneos, ligas y eventos deportivos a nivel regional.</p>
+      <ul class="role-features">
+        <li>Creación y gestión de torneos</li>
+        <li>Llaves automáticas y grupos</li>
+        <li>Marcadores y tabla de posiciones</li>
+        <li>Control de inscripciones y pagos</li>
+        <li>Comunicación con equipos participantes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>¿Listo para jugar<br />en <span style="color:var(--green)">modo pro</span>?</h2>
+  <p>Descargá Zonal Station gratis y empezá a reservar, competir y crecer en el fútbol uruguayo.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px;">
+    <a href="https://play.google.com/store" class="btn-primary" target="_blank">
+      ▶ Descargar en Google Play
+    </a>
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html" class="btn-secondary" target="_blank">
+      🔒 Política de Privacidad
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="dot"></span>
+    Zonal Station
+  </div>
+  <div class="footer-links">
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html" target="_blank">Política de Privacidad</a>
+    <a href="mailto:soporte@zonalstation.com">Contacto</a>
+    <a href="#features">Funciones</a>
+  </div>
+  <p>© 2026 Zonal Station · Hecho en Uruguay 🇺🇾</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth nav highlight
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const pos = window.scrollY + 200;
+    document.querySelectorAll('section[id], div[id]').forEach(sec => {
+      if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+        navLinks.forEach(l => l.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+        if (active) active.style.color = '#22c55e';
+      }
+    });
+  });
+</script>
 </body>
 </html>
