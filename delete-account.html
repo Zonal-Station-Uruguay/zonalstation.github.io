@@ -1,299 +1,315 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminación de Cuenta | Zonal Station</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00D1FF;
-            --secondary: #0076FF;
-            --danger: #FF4A4A;
-            --bg: #0F172A;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminación de Cuenta | Zonal Station</title>
+  <meta name="description" content="Instrucciones para solicitar la eliminación de tu cuenta y datos asociados en Zonal Station." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+    :root {
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-glow: rgba(34,197,94,0.25);
+      --danger: #ef4444;
+      --danger-glow: rgba(239, 68, 68, 0.15);
+      --bg: #080e14;
+      --bg2: #0d1520;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f6ff;
+      --muted: #7a8fa6;
+    }
 
-        body {
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 209, 255, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 90% 80%, rgba(0, 118, 255, 0.08) 0%, transparent 45%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-            color: white;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .container {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            padding: 3rem 2.5rem;
-            border-radius: 32px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.5s ease-out;
-        }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,14,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo a { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green); color: #000; padding: 9px 22px; border-radius: 50px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* ─── CONTENT CONTAINER ─── */
+    .content-wrapper {
+      padding: 140px 24px 80px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .content-wrapper::before {
+      content: '';
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
+    .card-container {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+      border-radius: 32px;
+      width: 100%;
+      max-width: 650px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: fadeUp 0.5s ease-out both;
+    }
 
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    h1 .accent { color: var(--green); }
 
-        .logo-icon svg {
-            width: 28px;
-            height: 28px;
-            color: white;
-        }
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
 
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .alert-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 14px;
+    }
+    .alert-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--danger);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .alert-text {
+      color: #fca5a5;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
 
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
 
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
+    .step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 1.5rem;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .step-content p { margin-bottom: 0; font-size: 0.9rem; }
 
-        .alert-box {
-            background: rgba(255, 74, 74, 0.1);
-            border: 1px solid rgba(255, 74, 74, 0.2);
-            padding: 1.2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 12px;
-        }
+    .data-list {
+      margin: 1.2rem 0 1.5rem;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .data-list li { margin-bottom: 6px; }
 
-        .alert-box svg {
-            width: 24px;
-            height: 24px;
-            color: var(--danger);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--green);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 20px var(--green-glow);
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .btn-primary:hover {
+      background: #4ade80;
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px var(--green-glow);
+    }
+    .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.5;
+    }
 
-        .alert-text {
-            color: #f87171;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border); padding: 48px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+      background: rgba(8,14,20,0.5);
+    }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    .footer-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.8rem; }
 
-        .steps-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #fff;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        .step-item {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 1.2rem;
-        }
-
-        .step-number {
-            width: 28px;
-            height: 28px;
-            background: rgba(0, 209, 255, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .step-content h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: #fff;
-        }
-
-        .step-content p {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-
-        .data-list {
-            margin-top: 1.5rem;
-            padding-left: 20px;
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .data-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        .btn-container {
-            margin-top: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn {
-            color: white;
-            text-decoration: none;
-            padding: 1rem;
-            border-radius: 16px;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            box-shadow: 0 10px 20px -5px rgba(0, 209, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px -5px rgba(0, 209, 255, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-note {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-    </style>
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .content-wrapper { padding-top: 110px; }
+      .card-container { padding: 32px 24px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-container">
-            <div class="logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    <path d="M2 12h20"></path>
-                </svg>
-            </div>
-            <span class="logo-text">Zonal Station</span>
-        </div>
 
-        <h1>Solicitud de Eliminación de Cuenta y Datos</h1>
-        <p>En Zonal Station respetamos tu privacidad. A continuación, te explicamos cómo solicitar la eliminación definitiva de tu cuenta de usuario y todos los datos personales asociados.</p>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html">
+      <span class="dot"></span>
+      Zonal Station
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#features">Funciones</a>
+    <a href="index.html#roles">Usuarios</a>
+    <a href="index.html#how">Cómo funciona</a>
+  </div>
+  <a href="https://play.google.com/store" class="nav-cta" target="_blank">Descargar App</a>
+</nav>
 
-        <div class="alert-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                <line x1="12" y1="9" x2="12" y2="13"></line>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
-            <div class="alert-text">
-                <strong>Atención:</strong> Esta acción es irreversible. Al eliminar tu cuenta perderás el acceso a tus reservas activas, historial de partidos, escuadras, estadísticas acumuladas y nivel de XP.
-            </div>
-        </div>
+<!-- CONTENT -->
+<div class="content-wrapper">
+  <div class="card-container">
+    <h1>Eliminación de Cuenta <br/>y <span class="accent">Datos Personales</span></h1>
+    <p>En Zonal Station valoramos tu privacidad. Aquí te explicamos detalladamente el procedimiento para solicitar la desactivación y el borrado absoluto de tu cuenta y su información asociada.</p>
 
-        <h2 class="steps-title">¿Cómo eliminar mi cuenta?</h2>
-        
-        <div class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-content">
-                <h3>Desde la aplicación móvil</h3>
-                <p>Ve a tu <strong>Perfil</strong> > ingresa a <strong>Configuración</strong> > presiona el botón rojo <strong>"Eliminar Cuenta"</strong> y confirma la acción. Tus datos se borrarán de forma inmediata y automática.</p>
-            </div>
-        </div>
-
-        <div class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-content">
-                <h3>Solicitud vía web o correo (si no tienes la app)</h3>
-                <p>Si ya desinstalaste la aplicación, puedes enviarnos una solicitud de eliminación haciendo clic en el botón de abajo o escribiendo a nuestro soporte.</p>
-            </div>
-        </div>
-
-        <h2 class="steps-title" style="margin-top: 2rem;">¿Qué datos se eliminan?</h2>
-        <p>Al procesarse tu solicitud, eliminamos permanentemente:</p>
-        <ul class="data-list">
-            <li>Tus credenciales de acceso (email y contraseña encriptada).</li>
-            <li>Información de perfil (nombre, teléfono y foto de perfil).</li>
-            <li>Tu vinculación con escuadras y equipos creados.</li>
-            <li>Tus registros de actividad individuales y tokens de notificaciones push.</li>
-        </ul>
-        <p style="font-size: 0.9rem; margin-top: 1rem; color: #64748b;"><em>Nota: Los resultados históricos de partidos ya jugados se mantendrán para no alterar las estadísticas globales del resto de los jugadores del encuentro, pero se disociarán completamente de tus datos personales, pasando a ser anónimos.</em></p>
-
-        <div class="btn-container">
-            <a href="mailto:soporte@zonalstation.com?subject=Solicitud%20de%20Eliminacion%20de%20Cuenta%20Zonal%20Station" class="btn btn-primary">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Solicitar Eliminación por Correo
-            </a>
-        </div>
-
-        <div class="footer-note">
-            Zonal Station &copy; 2026 - Todos los derechos reservados.
-        </div>
+    <div class="alert-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+      <div class="alert-text">
+        <strong>Importante:</strong> Esta acción borrará permanentemente tu historial de partidos, nivel de XP, escuadras y reservas vigentes. No se podrá revertir una vez confirmada.
+      </div>
     </div>
+
+    <h2 class="section-title">¿Cómo solicitar el borrado?</h2>
+    
+    <div class="step-item">
+      <div class="step-number step-num">1</div>
+      <div class="step-content">
+        <h3>Desde la aplicación móvil (Recomendado)</h3>
+        <p>Iniciá sesión en la app, ingresá a tu <strong>Perfil</strong>, abrí el menú de <strong>Configuración</strong>, presioná la opción roja <strong>"Eliminar Cuenta"</strong> y confirmá. La eliminación de tu perfil se procesa de forma inmediata en nuestros servidores.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-number step-num">2</div>
+      <div class="step-content">
+        <h3>Solicitud por Correo Electrónico</h3>
+        <p>Si ya no tenés la aplicación instalada, podés presionar el botón inferior para enviar un correo a nuestro equipo de soporte solicitando el borrado de tu cuenta.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 2rem;">¿Qué datos eliminamos?</h2>
+    <p>Una vez procesada tu solicitud, borramos definitivamente:</p>
+    <ul class="data-list">
+      <li>Tu información de perfil (nombre completo, número telefónico y foto de perfil).</li>
+      <li>Tus credenciales de autenticación (correo electrónico).</li>
+      <li>Tus registros de escuadras creadas y tokens de notificaciones push de tu dispositivo.</li>
+    </ul>
+    <p style="font-size: 0.85rem; color: var(--muted);">
+      <em>Nota: Las estadísticas históricas de partidos globales compartidos se mantendrán para no alterar los registros de otros jugadores involucrados, pero se anonimizarán eliminando todo rastro de tu identidad personal de los mismos.</em>
+    </p>
+
+    <a href="mailto:soporte@zonalstation.com?subject=Solicitud%20de%20Eliminacion%20de%20Cuenta%20Zonal%20Station" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+      Solicitar eliminación de datos por correo
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="dot"></span>
+    Zonal Station
+  </div>
+  <div class="footer-links">
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html" target="_blank">Política de Privacidad</a>
+    <a href="mailto:soporte@zonalstation.com">Contacto</a>
+    <a href="index.html#features">Funciones</a>
+  </div>
+  <p>© 2026 Zonal Station · Hecho en Uruguay 🇺🇾</p>
+</footer>
+
 </body>
 </html>
