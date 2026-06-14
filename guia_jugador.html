@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía del Jugador — Zonal Station</title>
+  <meta name="description" content="Aprende a usar todas las funciones de Zonal Station: reserva de canchas, desafíos, equipos y videos de tus mejores goles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-glow: rgba(34,197,94,0.25);
+      --bg: #080e14;
+      --bg2: #0d1520;
+      --bg3: #111c28;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f6ff;
+      --muted: #7a8fa6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,14,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo a { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green); color: #000; padding: 9px 22px; border-radius: 50px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 180px 24px 80px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,197,94,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    h1 .accent { color: var(--green); }
+    .hero-sub {
+      max-width: 640px; margin: 0 auto;
+      color: var(--muted); font-size: 1.1rem;
+    }
+
+    /* ─── CONTENT ─── */
+    .guide-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px 100px;
+    }
+
+    .guide-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h2 .icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    /* ─── PASO A PASO LIST ─── */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 24px 0;
+    }
+    .steps-list li {
+      position: relative;
+      padding-left: 56px;
+    }
+    .steps-list .badge {
+      position: absolute; left: 0; top: 2px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green); color: #000;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.9rem;
+    }
+    .steps-list strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ─── GRID CARDS ─── */
+    .inner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .inner-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 18px;
+    }
+    .inner-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .inner-card p {
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+
+    /* ─── CALLOUT INFO ─── */
+    .callout {
+      background: rgba(34, 197, 94, 0.05);
+      border-left: 4px solid var(--green);
+      padding: 20px;
+      border-radius: 0 16px 16px 0;
+      margin: 24px 0;
+    }
+    .callout p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: #a3e635;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border); padding: 48px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+      background: rgba(8,14,20,0.5);
+    }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    .footer-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 130px; }
+      .guide-section { padding: 24px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/">
+      <span class="dot"></span>
+      Zonal Station
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#features">Funciones</a>
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#roles">Usuarios</a>
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#how">Cómo funciona</a>
+  </div>
+  <a href="https://play.google.com/apps/testing/com.zonalstation.app" class="nav-cta" target="_blank">Descargar App</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>Guía para <span class="accent">Jugadores</span></h1>
+  <p class="hero-sub">Aprendé a dominar todas las herramientas que Zonal Station te da para organizar tus partidos, armar desafíos y subir tus mejores jugadas.</p>
+</header>
+
+<!-- GUIDE CONTENT -->
+<main class="guide-container">
+
+  <!-- SECCIÓN 1: RESERVAS Y PAGOS -->
+  <section class="guide-section">
+    <h2><span class="icon">📅</span> 1. Reservas de Canchas y Pagos</h2>
+    <p>Buscar y asegurar tu cancha en Uruguay nunca fue tan rápido. Podés filtrar por cercanía, tipo de superficie (césped sintético, natural, parquet) y horarios disponibles.</p>
+    
+    <h3>¿Cómo reservar un turno?</h3>
+    <ol class="steps-list">
+      <li>
+        <span class="badge">1</span>
+        <strong>Elegí el Complejo:</strong>
+        <p>Buscá en el mapa interactivo o en la lista de complejos. Seleccioná la cancha y mirá los horarios disponibles.</p>
+      </li>
+      <li>
+        <span class="badge">2</span>
+        <strong>Elegí el Método de Pago:</strong>
+        <p>Podés abonar de forma <strong>Digital</strong> (seña o total mediante Mercado Pago) o seleccionar <strong>Efectivo/Transferencia</strong> para coordinar directamente con el dueño.</p>
+      </li>
+      <li>
+        <span class="badge">3</span>
+        <strong>Confirmación Instantánea:</strong>
+        <p>Una vez completado el pago, tu reserva queda confirmada de inmediato. Si pagás por transferencia, enviá el comprobante al WhatsApp del complejo con el botón integrado en la app.</p>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <p>💡 <strong>Resiliencia ante fallos de señal:</strong> Si tu conexión falla durante el pago pero se te debita el dinero, ¡no te preocupes! El ticket de Mercado Pago respalda tu reserva y el propietario podrá validarte el turno de forma manual en su sistema.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: PAGO DIVIDIDO -->
+  <section class="guide-section">
+    <h2><span class="icon">💰</span> 2. Sistema de Pago Dividido</h2>
+    <p>Olvidate de ser el encargado de cobrarle a cada uno de tus amigos después del partido. Dividí el costo del alquiler de forma equitativa directamente desde la aplicación.</p>
+    
+    <h3>¿Cómo funciona?</h3>
+    <ol class="steps-list">
+      <li>
+        <span class="badge">1</span>
+        <strong>Activá la opción:</strong>
+        <p>Al momento de reservar, activá la casilla de "Pago Dividido".</p>
+      </li>
+      <li>
+        <span class="badge">2</span>
+        <strong>Compartí el Código de Invitación:</strong>
+        <p>La app generará un código único para tu partido. Envíaselo a tus amigos para que se unan a la escuadra desde la app.</p>
+      </li>
+      <li>
+        <span class="badge">3</span>
+        <strong>Cada uno paga su parte:</strong>
+        <p>Tus amigos entran a Zonal Station, ingresan el código y pagan su porcentaje correspondiente de manera digital.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SECCIÓN 3: DESAFÍOS Y MATCHMAKING -->
+  <section class="guide-section">
+    <h2><span class="icon">⚔️</span> 3. Desafíos y Matchmaking (Amistosos)</h2>
+    <p>¿Tienen equipo completo pero no encuentran rival? ¿O les faltan jugadores para completar el fútbol 5? El sistema de matchmaking automatizado es la solución.</p>
+    
+    <div class="inner-grid">
+      <div class="inner-card">
+        <h4>🔥 Crear un Desafío</h4>
+        <p>Reservá una cancha en modalidad "Desafío". Tu partido aparecerá listado públicamente para que otros equipos de tu misma zona y nivel puedan postularse para jugar contra ustedes.</p>
+      </div>
+      <div class="inner-card">
+        <h4>⚽ Postularse a un Partido</h4>
+        <p>Si buscás rival, navegá la sección de "Desafíos Disponibles", filtrá por nivel (Principiante, Intermedio, Avanzado) y postulá a tu equipo. El creador decidirá si acepta el encuentro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: HIGHLIGHTS Y COMPRESIÓN CON IA -->
+  <section class="guide-section">
+    <h2><span class="icon">📹</span> 4. Galería de Goles (Highlights)</h2>
+    <p>Compartí tus mejores jugadas con la comunidad. En Zonal Station podés subir videos de tus goles para mostrarlos en el feed social de la aplicación.</p>
+
+    <h3>Subida de Videos Optimizada:</h3>
+    <ul>
+      <li><strong>Compresión Inteligente:</strong> Cuando seleccionás un video de tu celular, la app lo optimiza automáticamente antes de subirlo. Esto reduce drásticamente el consumo de tus datos móviles y acelera la carga.</li>
+      <li><strong>Indicador en Pantalla:</strong> Durante la optimización y subida, verás el mensaje <em>"Procesando y optimizando video..."</em> para que sepas exactamente cuándo tu gol está listo para publicarse.</li>
+      <li><strong>Feed Social:</strong> Tus goles aparecerán en el feed donde otros usuarios podrán dar "Me Gusta", comentar y seguir tu perfil de jugador.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN 5: GAMIFICACIÓN Y REPUTACIÓN -->
+  <section class="guide-section">
+    <h2><span class="icon">🎮</span> 5. Sistema de Reputación y Badges</h2>
+    <p>Tu conducta dentro y fuera de la cancha tiene recompensa. Queremos promover el fútbol limpio y el compromiso.</p>
+
+    <div class="inner-grid">
+      <div class="inner-card">
+        <h4>⭐ Nivel de Fiabilidad</h4>
+        <p>Se calcula según tu asistencia a los partidos reservados. Si cancelás a último momento o no te presentás (no-show), tu porcentaje bajará, limitando tu capacidad de unirte a nuevos desafíos.</p>
+      </div>
+      <div class="inner-card">
+        <h4>🏆 Badges y Niveles</h4>
+        <p>Desbloqueá insignias por hitos deportivos: "Goleador", "Fair Play", "Organizador Estrella" o "Asistencia Perfecta". Subí de nivel y mostrá tu estatus en tu perfil de jugador.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="dot"></span>
+    Zonal Station
+  </div>
+  <div class="footer-links">
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html" target="_blank">Política de Privacidad</a>
+    <a href="delete-account.html">Eliminar Cuenta</a>
+    <a href="mailto:soporte@zonalstation.com.uy">Contacto</a>
+    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#features">Funciones</a>
+  </div>
+  <p>© 2026 Zonal Station · Hecho en Uruguay 🇺🇾</p>
+</footer>
+
+</body>
+</html>
