@@ -1,260 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidad | Zonal Station</title>
-  <meta name="description" content="Política de privacidad de Zonal Station de acuerdo con la Ley Nº 18.331 de Protección de Datos Personales en Uruguay." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Pago Exitoso! | Zonal Station</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00D1FF;
+            --secondary: #0076FF;
+            --success: #00E676;
+            --bg: #0F172A;
+        }
 
-    :root {
-      --green: #22c55e;
-      --green-dark: #16a34a;
-      --green-glow: rgba(34,197,94,0.25);
-      --bg: #080e14;
-      --bg2: #0d1520;
-      --card: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --text: #f0f6ff;
-      --muted: #7a8fa6;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 209, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 118, 255, 0.1) 0%, transparent 40%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(8,14,20,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
-    .nav-logo a { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-    .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--green); color: #000; padding: 9px 22px; border-radius: 50px;
-      font-weight: 700; font-size: 0.85rem; text-decoration: none;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-    .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 32px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.6s ease-out;
+        }
 
-    /* ─── CONTENT CONTAINER ─── */
-    .content-wrapper {
-      padding: 140px 24px 80px;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .content-wrapper::before {
-      content: '';
-      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .card-container {
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      padding: 48px 40px;
-      border-radius: 32px;
-      width: 100%;
-      max-width: 750px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      animation: fadeUp 0.5s ease-out both;
-    }
+        .icon-container {
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 230, 118, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    h1 .accent { color: var(--green); }
+        .icon-container svg {
+            width: 50px;
+            height: 50px;
+            color: var(--success);
+            animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
 
-    p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
+        @keyframes checkmark {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-    strong {
-      color: var(--green);
-      font-weight: 600;
-    }
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    h2 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
 
-    ul {
-      margin: 1rem 0 1.5rem;
-      padding-left: 20px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-    ul li { margin-bottom: 8px; }
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-weight: 600;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px rgba(0, 209, 255, 0.3);
+        }
 
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      width: 100%;
-      margin-top: 2rem;
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-2px);
-    }
+        .btn:active {
+            transform: scale(0.98);
+        }
 
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--border); padding: 48px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px;
-      background: rgba(8,14,20,0.5);
-    }
-    .footer-logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-    .footer-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--text); }
-    footer p { color: var(--muted); font-size: 0.8rem; }
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+        }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .content-wrapper { padding-top: 110px; }
-      .card-container { padding: 32px 24px; }
-      footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
-    }
-  </style>
+        .countdown {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
+    <div class="card">
+        <div class="icon-container">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <h1>¡Pago Confirmado!</h1>
+        <p>Tu transacción ha sido procesada exitosamente. Estamos preparándolo todo en la app.</p>
+        
+        <a id="redirectLink" href="zonalstation://" class="btn">
+            <span class="loader"></span> Volver a la App
+        </a>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/">
-      <span class="dot"></span>
-      Zonal Station
-    </a>
-  </div>
-  <div class="nav-links">
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#features">Funciones</a>
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#roles">Usuarios</a>
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#how">Cómo funciona</a>
-  </div>
-  <a href="https://play.google.com/store" class="nav-cta" target="_blank">Descargar App</a>
-</nav>
+        <div class="countdown">
+            Serás redirigido automáticamente en <span id="seconds">5</span> segundos...
+        </div>
 
-<!-- CONTENT -->
-<div class="content-wrapper">
-  <div class="card-container">
-    <h1>Política de <span class="accent">Privacidad</span></h1>
-    <p>De acuerdo con la <strong>Ley Nº 18.331 de Protección de Datos Personales y Acción de "Habeas Data"</strong> de la República Oriental del Uruguay, se informa a los usuarios sobre el tratamiento de sus datos personales.</p>
+        <a href="../../index.html" style="display: inline-block; margin-top: 1.5rem; color: #00D1FF; font-size: 0.9rem; text-decoration: none; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+            Ir a la página principal
+        </a>
+    </div>
 
-    <h2>1. Responsable del Tratamiento</h2>
-    <p>Los datos recolectados a través de la aplicación Zonal Station son tratados con el fin de proporcionar servicios de reserva de canchas, gestión de equipos y organización de partidos de fútbol.</p>
+    <script>
+        // Intentar redirigir inmediatamente
+        const appScheme = "zonalstation://";
+        window.location.href = appScheme;
 
-    <h2>2. Datos Recolectados</h2>
-    <ul>
-        <li><strong>Datos Identificatorios:</strong> Nombre completo, correo electrónico, foto de perfil (opcional).</li>
-        <li><strong>Datos de Ubicación:</strong> Se utiliza la ubicación GPS para mostrar complejos cercanos y calcular distancias (solo con consentimiento explícito).</li>
-        <li><strong>Datos de Uso y Conducta:</strong> Historial de reservas, estadísticas de partidos, pertenencia a equipos y métricas de fiabilidad/fair play para el sistema de matchmaking.</li>
-        <li><strong>Datos Financieros:</strong> Historial de transacciones y estados de pago. <strong>Nota:</strong> Zonal Station no almacena datos de tarjetas de crédito o débito; el procesamiento es realizado íntegramente por MercadoPago.</li>
-    </ul>
+        // Si el esquema falla (porque no está en móvil), el contador sigue
+        let timeLeft = 5;
+        const secondsSpan = document.getElementById('seconds');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            secondsSpan.innerText = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = appScheme;
+            }
+        }, 1000);
 
-    <h2>3. Finalidad del Tratamiento</h2>
-    <p>Los datos se utilizan exclusivamente para:</p>
-    <ul>
-        <li>Facilitar el proceso de reserva, división de pagos (50/50) y confirmación de asistencia.</li>
-        <li>Gestionar el sistema de emparejamiento (matchmaking) basado en nivel y fiabilidad.</li>
-        <li>Permitir la interacción social entre jugadores y la coordinación de equipos.</li>
-        <li>Envío de notificaciones push y alertas críticas sobre el estado de sus partidos.</li>
-    </ul>
-
-    <h2>4. Derechos de los Titulares (Derechos ARCO)</h2>
-    <p>Usted tiene derecho a:</p>
-    <ul>
-        <li><strong>Acceso:</strong> Conocer qué datos tenemos de usted.</li>
-        <li><strong>Rectificación:</strong> Corregir datos inexactos o desactualizados.</li>
-        <li><strong>Actualización:</strong> Mantener sus datos al día.</li>
-        <li><strong>Supresión:</strong> Solicitar la eliminación definitiva de su cuenta. Para garantizar la integridad de las reservas en curso, se aplicará un período de gracia de 30 días antes de la eliminación total de los registros.</li>
-    </ul>
-
-    <h2>5. Ejercicio de Derechos</h2>
-    <p>Para ejercer sus derechos, puede hacerlo directamente desde la configuración de su perfil en la aplicación o enviando un correo electrónico a soporte@zonalstation.com.uy.</p>
-
-    <h2>6. Seguridad de los Datos</h2>
-    <p>Zonal Station implementa medidas técnicas y organizativas necesarias para garantizar la seguridad y confidencialidad de sus datos personales, evitando su adulteración, pérdida, consulta o tratamiento no autorizado.</p>
-
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/" class="btn-secondary">
-      ← Volver al Inicio
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">
-    <span class="dot"></span>
-    Zonal Station
-  </div>
-  <div class="footer-links">
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html">Política de Privacidad</a>
-    <a href="delete-account.html">Eliminar Cuenta</a>
-    <a href="mailto:soporte@zonalstation.com.uy">Contacto</a>
-    <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/#features">Funciones</a>
-  </div>
-  <p>© 2026 Zonal Station - Uruguay · Hecho en Uruguay 🇺🇾</p>
-</footer>
-
+        // Capturar parámetros de URL (MP envía payment_id, status, etc)
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('bookingId');
+        if (bookingId) {
+            document.getElementById('redirectLink').href = `${appScheme}payment-success?bookingId=${bookingId}`;
+        }
+    </script>
 </body>
 </html>
