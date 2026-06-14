@@ -181,6 +181,9 @@
     .role-card {
       border-radius: 24px; padding: 40px; position: relative; overflow: hidden;
       border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .role-card.player { background: linear-gradient(135deg, #0d1a0d, #0f2d1a); }
     .role-card.provider { background: linear-gradient(135deg, #0d1520, #0a2040); }
@@ -193,7 +196,7 @@
     .role-tag {
       display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; padding: 4px 12px; border-radius: 50px;
-      margin-bottom: 16px;
+      margin-bottom: 16px; align-self: flex-start;
     }
     .player .role-tag { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
     .provider .role-tag { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
@@ -204,6 +207,14 @@
     .role-features { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
     .role-features li { font-size: 0.85rem; color: #94a3b8; display: flex; gap: 8px; align-items: flex-start; }
     .role-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .role-cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+      color: var(--text); padding: 12px 20px; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      transition: all 0.2s; margin-top: 28px; width: 100%;
+    }
+    .role-cta-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); border-color: var(--green); }
 
     /* ─── CTA ─── */
     .cta-section {
@@ -262,6 +273,8 @@
     <a href="#features">Funciones</a>
     <a href="#roles">Usuarios</a>
     <a href="#how">Cómo funciona</a>
+    <a href="guia_jugador.html">Guía Jugadores</a>
+    <a href="guia_propietario.html">Guía Propietarios</a>
   </div>
   <a href="https://play.google.com/apps/testing/com.zonalstation.app" class="nav-cta" target="_blank">Descargar App</a>
 </nav>
@@ -330,7 +343,7 @@
       <p>¿No querés poner todo vos? Dividí el costo de la reserva entre todos los jugadores del partido.</p>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon">🎮</div>
+      <div class="feature-icon">⚙️</div>
       <h3>Gamificación</h3>
       <p>Ganás badges, subís de nivel y construís tu reputación como jugador confiable y competitivo.</p>
     </div>
@@ -385,45 +398,54 @@
 
   <div class="roles-grid">
     <div class="role-card player reveal">
-      <div class="role-tag">Jugador</div>
-      <span class="role-emoji">⚽</span>
-      <h3>Jugadores</h3>
-      <p>Para quienes quieren jugar más, mejor y con más organización.</p>
-      <ul class="role-features">
-        <li>Reservas de canchas con pago digital</li>
-        <li>Equipo con estadísticas y fiabilidad</li>
-        <li>Matchmaking y desafíos entre equipos</li>
-        <li>Historial de partidos y gamificación</li>
-        <li>Pago dividido entre jugadores</li>
-      </ul>
+      <div>
+        <div class="role-tag">Jugador</div>
+        <span class="role-emoji">⚽</span>
+        <h3>Jugadores</h3>
+        <p>Para quienes quieren jugar más, mejor y con más organización.</p>
+        <ul class="role-features">
+          <li>Reservas de canchas con pago digital</li>
+          <li>Equipo con estadísticas y fiabilidad</li>
+          <li>Matchmaking y desafíos entre equipos</li>
+          <li>Historial de partidos y gamificación</li>
+          <li>Pago dividido entre jugadores</li>
+        </ul>
+      </div>
+      <a href="guia_jugador.html" class="role-cta-btn">Ver Guía de Jugador →</a>
     </div>
 
     <div class="role-card provider reveal">
-      <div class="role-tag">Proveedor</div>
-      <span class="role-emoji">🏟️</span>
-      <h3>Complejos Deportivos</h3>
-      <p>Para dueños y administradores de canchas que quieren crecer digitalmente.</p>
-      <ul class="role-features">
-        <li>Dashboard de reservas en tiempo real</li>
-        <li>Gestión de canchas y horarios</li>
-        <li>Integración con Mercado Pago</li>
-        <li>Publicidad en la plataforma</li>
-        <li>Estadísticas e ingresos mensuales</li>
-      </ul>
+      <div>
+        <div class="role-tag">Proveedor</div>
+        <span class="role-emoji">🏟️</span>
+        <h3>Complejos Deportivos</h3>
+        <p>Para dueños y administradores de canchas que quieren crecer digitalmente.</p>
+        <ul class="role-features">
+          <li>Dashboard de reservas en tiempo real</li>
+          <li>Gestión de canchas y horarios</li>
+          <li>Integración con Mercado Pago</li>
+          <li>Publicidad en la plataforma</li>
+          <li>Estadísticas e ingresos mensuales</li>
+        </ul>
+      </div>
+      <a href="guia_propietario.html" class="role-cta-btn">Ver Guía de Propietario →</a>
     </div>
 
     <div class="role-card admin reveal">
-      <div class="role-tag">Organizador</div>
-      <span class="role-emoji">📋</span>
-      <h3>Organizadores</h3>
-      <p>Para quienes gestionan torneos, ligas y eventos deportivos a nivel regional.</p>
-      <ul class="role-features">
-        <li>Creación y gestión de torneos</li>
-        <li>Llaves automáticas y grupos</li>
-        <li>Marcadores y tabla de posiciones</li>
-        <li>Control de inscripciones y pagos</li>
-        <li>Comunicación con equipos participantes</li>
-      </ul>
+      <div>
+        <div class="role-tag">Organizador</div>
+        <span class="role-emoji">📋</span>
+        <h3>Organizadores</h3>
+        <p>Para quienes gestionan torneos, ligas y eventos deportivos a nivel regional.</p>
+        <ul class="role-features">
+          <li>Creación y gestión de torneos</li>
+          <li>Llaves automáticas y grupos</li>
+          <li>Marcadores y tabla de posiciones</li>
+          <li>Control de inscripciones y pagos</li>
+          <li>Comunicación con equipos participantes</li>
+        </ul>
+      </div>
+      <a href="guia_propietario.html" class="role-cta-btn">Ver Guía de Gestión →</a>
     </div>
   </div>
 </section>
@@ -451,6 +473,8 @@
   </div>
   <div class="footer-links">
     <a href="https://zonal-station-uruguay.github.io/zonalstation.github.io/privacy_policy.html" target="_blank">Política de Privacidad</a>
+    <a href="guia_jugador.html">Guía Jugadores</a>
+    <a href="guia_propietario.html">Guía Propietarios</a>
     <a href="delete-account.html">Eliminar Cuenta</a>
     <a href="mailto:soporte@zonalstation.com.uy">Contacto</a>
     <a href="#features">Funciones</a>
