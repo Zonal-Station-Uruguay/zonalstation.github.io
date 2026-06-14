@@ -216,6 +216,26 @@
     }
     .role-cta-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); border-color: var(--green); }
 
+    /* ─── APP SHOWCASE ─── */
+    .app-showcase {
+      display: flex; gap: 40px; align-items: center; justify-content: center;
+      margin-top: 56px; flex-wrap: wrap;
+    }
+    .showcase-item {
+      max-width: 320px; text-align: center;
+    }
+    .showcase-img {
+      width: 100%; border-radius: 36px; border: 4px solid var(--border);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .showcase-img:hover {
+      transform: scale(1.03);
+    }
+    .showcase-label {
+      color: var(--text); font-size: 1rem; font-weight: 700; margin-top: 18px; display: block;
+    }
+
     /* ─── CTA ─── */
     .cta-section {
       padding: 120px 24px; text-align: center;
@@ -249,7 +269,6 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
@@ -338,12 +357,12 @@
       <p>Creá tu equipo, invitá jugadores, definí titulares y seguí las estadísticas de victorias y fiabilidad.</p>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon">💰</div>
-      <h3>Pago Dividido</h3>
-      <p>¿No querés poner todo vos? Dividí el costo de la reserva entre todos los jugadores del partido.</p>
+      <div class="feature-icon">📹</div>
+      <h3>Galería de Goles (Highlights)</h3>
+      <p>Subí y compartí videos de tus goles directamente desde la app. El sistema los comprime de forma inteligente para no consumir tus datos.</p>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon">⚙️</div>
+      <div class="feature-icon">🎮</div>
       <h3>Gamificación</h3>
       <p>Ganás badges, subís de nivel y construís tu reputación como jugador confiable y competitivo.</p>
     </div>
@@ -408,7 +427,7 @@
           <li>Equipo con estadísticas y fiabilidad</li>
           <li>Matchmaking y desafíos entre equipos</li>
           <li>Historial de partidos y gamificación</li>
-          <li>Pago dividido entre jugadores</li>
+          <li>Highlights y feed social de videos</li>
         </ul>
       </div>
       <a href="guia_jugador.html" class="role-cta-btn">Ver Guía de Jugador →</a>
@@ -446,6 +465,17 @@
         </ul>
       </div>
       <a href="guia_propietario.html" class="role-cta-btn">Ver Guía de Gestión →</a>
+    </div>
+  </div>
+
+  <div class="app-showcase reveal">
+    <div class="showcase-item">
+      <img src="player_app_mockup.png" alt="Pantalla de Jugador" class="showcase-img" />
+      <span class="showcase-label">Home de Jugadores</span>
+    </div>
+    <div class="showcase-item">
+      <img src="owner_app_mockup.png" alt="Pantalla del Propietario" class="showcase-img" />
+      <span class="showcase-label font-bold">Dashboard del Complejo</span>
     </div>
   </div>
 </section>
