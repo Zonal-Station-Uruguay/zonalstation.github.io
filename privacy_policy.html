@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidad | Zonal Station</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Política de Privacidad | Zonal Station (Responsive)</title>
   <meta name="description" content="Política de privacidad de Zonal Station de acuerdo con la Ley Nº 18.331 de Protección de Datos Personales en Uruguay." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
@@ -32,33 +32,40 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      line-height: 1.5;
     }
 
-    /* ─── NAV ─── */
+    /* ─── NAV RESPONSIVE (oculta enlaces en móvil) ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(8,14,20,0.85);
+      padding: 14px 24px;
+      background: rgba(8,14,20,0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo { 
+      display: flex; align-items: center; gap: 10px; 
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      font-weight: 800; letter-spacing: -0.5px;
+    }
     .nav-logo a { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
     .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
     .nav-links a:hover { color: var(--text); }
+    
     .nav-cta {
-      background: var(--green); color: #000; padding: 9px 22px; border-radius: 50px;
-      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      background: var(--green); color: #000; padding: 8px 18px; border-radius: 50px;
+      font-weight: 700; font-size: 0.8rem; text-decoration: none; white-space: nowrap;
       transition: background 0.2s, box-shadow 0.2s;
     }
     .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
 
-    /* ─── CONTENT CONTAINER ─── */
+    /* ─── CONTENT CONTAINER (totalmente fluido) ─── */
     .content-wrapper {
-      padding: 140px 24px 80px;
+      padding: 120px 20px 80px;
       flex-grow: 1;
       display: flex;
       align-items: center;
@@ -68,7 +75,8 @@
     .content-wrapper::before {
       content: '';
       position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px; border-radius: 50%;
+      width: min(600px, 90vw); height: min(600px, 90vw);
+      border-radius: 50%;
       background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -77,16 +85,16 @@
       background: var(--card);
       backdrop-filter: blur(20px);
       border: 1px solid var(--border);
-      padding: 48px 40px;
+      padding: clamp(28px, 6vw, 48px);
       border-radius: 32px;
       width: 100%;
-      max-width: 750px;
+      max-width: 800px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       animation: fadeUp 0.5s ease-out both;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 6vw, 2rem);
       font-weight: 900;
       letter-spacing: -1px;
       margin-bottom: 1.5rem;
@@ -98,7 +106,7 @@
       color: var(--muted);
       line-height: 1.7;
       margin-bottom: 1.5rem;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
     }
 
     strong {
@@ -107,7 +115,7 @@
     }
 
     h2 {
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 4vw, 1.3rem);
       font-weight: 800;
       color: var(--text);
       margin-top: 2rem;
@@ -121,7 +129,7 @@
       margin: 1rem 0 1.5rem;
       padding-left: 20px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: clamp(0.85rem, 3vw, 0.95rem);
       line-height: 1.7;
     }
     ul li { margin-bottom: 8px; }
@@ -134,10 +142,10 @@
       background: var(--card);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
       transition: all 0.2s;
       width: 100%;
@@ -148,37 +156,53 @@
       transform: translateY(-2px);
     }
 
-    /* ─── FOOTER ─── */
+    /* ─── FOOTER RESPONSIVO ─── */
     footer {
-      border-top: 1px solid var(--border); padding: 48px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px;
-      background: rgba(8,14,20,0.5);
+      border-top: 1px solid var(--border); 
+      padding: 40px 24px;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      flex-wrap: wrap; 
+      gap: 24px;
+      background: rgba(8,14,20,0.6);
     }
-    .footer-logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    .footer-logo { font-weight: 800; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
     .footer-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; row-gap: 12px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
-    footer p { color: var(--muted); font-size: 0.8rem; }
+    footer p { color: var(--muted); font-size: 0.7rem; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .content-wrapper { padding-top: 110px; }
-      .card-container { padding: 32px 24px; }
-      footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
+    /* MEDIA QUERIES */
+    @media (max-width: 820px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }  /* Ocultar enlaces en tablet/móvil */
+      .content-wrapper { padding-top: 100px; }
+      .card-container { padding: 28px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 10px 16px; }
+      .nav-logo { font-size: 0.9rem; }
+      .nav-cta { padding: 6px 14px; font-size: 0.7rem; }
+      .content-wrapper { padding: 100px 16px 60px; }
+      .card-container { padding: 24px 18px; }
+      h2 { margin-top: 1.5rem; }
+      ul { padding-left: 16px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+      .footer-links { gap: 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAV RESPONSIVE -->
 <nav>
   <div class="nav-logo">
     <a href="index.html">
@@ -196,7 +220,7 @@
   <a href="https://play.google.com/apps/testing/com.zonalstation.app" class="nav-cta" target="_blank">Descargar App</a>
 </nav>
 
-<!-- CONTENT -->
+<!-- CONTENIDO PRINCIPAL (100% RESPONSIVE) -->
 <div class="content-wrapper">
   <div class="card-container">
     <h1>Política de <span class="accent">Privacidad</span></h1>
@@ -207,35 +231,35 @@
 
     <h2>2. Datos Recolectados</h2>
     <ul>
-        <li><strong>Datos Identificatorios:</strong> Nombre completo, correo electrónico, foto de perfil (opcional).</li>
-        <li><strong>Datos de Ubicación:</strong> Se utiliza la ubicación GPS para mostrar complejos cercanos y calcular distancias (solo con consentimiento explícito).</li>
-        <li><strong>Datos de Uso y Conducta:</strong> Historial de reservas, estadísticas de partidos, pertenencia a equipos y métricas de fiabilidad/fair play para el sistema de matchmaking.</li>
-        <li><strong>Datos Financieros:</strong> Historial de transacciones y estados de pago. <strong>Nota:</strong> Zonal Station no almacena datos de tarjetas de crédito o débito; el procesamiento es realizado íntegramente por MercadoPago.</li>
+      <li><strong>Datos Identificatorios:</strong> Nombre completo, correo electrónico, foto de perfil (opcional).</li>
+      <li><strong>Datos de Ubicación:</strong> Se utiliza la ubicación GPS para mostrar complejos cercanos y calcular distancias (solo con consentimiento explícito).</li>
+      <li><strong>Datos de Uso y Conducta:</strong> Historial de reservas, estadísticas de partidos, pertenencia a equipos y métricas de fiabilidad/fair play para el sistema de matchmaking.</li>
+      <li><strong>Datos Financieros:</strong> Historial de transacciones y estados de pago. <strong>Nota:</strong> Zonal Station no almacena datos de tarjetas de crédito o débito; el procesamiento es realizado íntegramente por MercadoPago.</li>
     </ul>
 
     <h2>3. Finalidad del Tratamiento</h2>
     <p>Los datos se utilizan exclusivamente para:</p>
     <ul>
-        <li>Facilitar el proceso de reserva y confirmación de asistencia.</li>
-        <li>Gestionar el sistema de emparejamiento (matchmaking) basado en nivel y fiabilidad.</li>
-        <li>Permitir la interacción social entre jugadores y la coordinación de equipos.</li>
-        <li>Envío de notificaciones push y alertas críticas sobre el estado de sus partidos.</li>
+      <li>Facilitar el proceso de reserva y confirmación de asistencia.</li>
+      <li>Gestionar el sistema de emparejamiento (matchmaking) basado en nivel y fiabilidad.</li>
+      <li>Permitir la interacción social entre jugadores y la coordinación de equipos.</li>
+      <li>Envío de notificaciones push y alertas críticas sobre el estado de sus partidos.</li>
     </ul>
 
     <h2>4. Intermediación Financiera y Resiliencia de Reservas</h2>
     <ul>
-        <li><strong>Rol de la Plataforma:</strong> Zonal Station opera exclusivamente como una plataforma tecnológica de intermediación que conecta a jugadores con complejos deportivos. La responsabilidad del cobro de reservas (a través de MercadoPago) y la prestación física del alquiler de las canchas recae íntegramente sobre los respectivos propietarios de los complejos.</li>
-        <li><strong>Garantía y Prevalencia del Comprobante:</strong> Ante fallos inesperados de señal de internet, desconexión de los usuarios o demoras en la sincronización técnica de los servidores, si el pago de la reserva o seña fue debitado de forma efectiva, el comprobante oficial de pago emitido por MercadoPago tendrá validez absoluta frente al complejo. El propietario estará legal y contractualmente obligado a validar y respetar el turno del jugador.</li>
-        <li><strong>Exclusión de Responsabilidades:</strong> Zonal Station no se responsabiliza por fallas técnicas en pasarelas de pago de terceros, pérdida de señal de telefonía celular o cortes de internet de los usuarios. Sin embargo, para mitigar discrepancias, la plataforma pone a disposición herramientas manuales en tiempo real para que tanto jugadores como propietarios resuelvan cualquier conflicto de sincronización al instante.</li>
+      <li><strong>Rol de la Plataforma:</strong> Zonal Station opera exclusivamente como una plataforma tecnológica de intermediación que conecta a jugadores con complejos deportivos. La responsabilidad del cobro de reservas (a través de MercadoPago) y la prestación física del alquiler de las canchas recae íntegramente sobre los respectivos propietarios de los complejos.</li>
+      <li><strong>Garantía y Prevalencia del Comprobante:</strong> Ante fallos inesperados de señal de internet, desconexión de los usuarios o demoras en la sincronización técnica de los servidores, si el pago de la reserva o seña fue debitado de forma efectiva, el comprobante oficial de pago emitido por MercadoPago tendrá validez absoluta frente al complejo. El propietario estará legal y contractualmente obligado a validar y respetar el turno del jugador.</li>
+      <li><strong>Exclusión de Responsabilidades:</strong> Zonal Station no se responsabiliza por fallas técnicas en pasarelas de pago de terceros, pérdida de señal de telefonía celular o cortes de internet de los usuarios. Sin embargo, para mitigar discrepancias, la plataforma pone a disposición herramientas manuales en tiempo real para que tanto jugadores como propietarios resuelvan cualquier conflicto de sincronización al instante.</li>
     </ul>
 
     <h2>5. Derechos de los Titulares (Derechos ARCO)</h2>
     <p>Usted tiene derecho a:</p>
     <ul>
-        <li><strong>Acceso:</strong> Conocer qué datos tenemos de usted.</li>
-        <li><strong>Rectificación:</strong> Corregir datos inexactos o desactualizados.</li>
-        <li><strong>Actualización:</strong> Mantener sus datos al día.</li>
-        <li><strong>Supresión:</strong> Solicitar la eliminación definitiva de su cuenta. Para garantizar la integridad de las reservas en curso, se aplicará un período de gracia de 30 días antes de la eliminación total de los registros.</li>
+      <li><strong>Acceso:</strong> Conocer qué datos tenemos de usted.</li>
+      <li><strong>Rectificación:</strong> Corregir datos inexactos o desactualizados.</li>
+      <li><strong>Actualización:</strong> Mantener sus datos al día.</li>
+      <li><strong>Supresión:</strong> Solicitar la eliminación definitiva de su cuenta. Para garantizar la integridad de las reservas en curso, se aplicará un período de gracia de 30 días antes de la eliminación total de los registros.</li>
     </ul>
 
     <h2>6. Ejercicio de Derechos</h2>
@@ -250,21 +274,21 @@
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER RESPONSIVO -->
 <footer>
   <div class="footer-logo">
     <span class="dot"></span>
     Zonal Station
   </div>
   <div class="footer-links">
-    <a href="privacy_policy.html" target="_blank">Política de Privacidad</a>
+    <a href="privacy_policy.html">Política de Privacidad</a>
     <a href="guia_jugador.html">Guía Jugadores</a>
     <a href="guia_propietario.html">Guía Propietarios</a>
     <a href="delete-account.html">Eliminar Cuenta</a>
     <a href="mailto:soporte@zonalstation.com.uy">Contacto</a>
     <a href="index.html#features">Funciones</a>
   </div>
-  <p>© 2026 Zonal Station - Uruguay · Hecho en Uruguay 🇺🇾</p>
+  <p>© 2026 Zonal Station · Hecho en Uruguay 🇺🇾</p>
 </footer>
 
 </body>
