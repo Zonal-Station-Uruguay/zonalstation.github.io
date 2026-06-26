@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Guía del Propietario — Zonal Station (Responsive)</title>
-  <meta name="description" content="Aprende a gestionar tu complejo deportivo con Zonal Station: administración de reservas, tarifas personalizadas, precio dinámico y publicidad." />
+  <title>Guía del Propietario — Zonal Station</title>
+  <meta name="description" content="Aprende a gestionar tu complejo deportivo con Zonal Station: reservas, tarifas personalizadas, precio dinámico, desafíos entre equipos y publicidad." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* RESET + VARIABLES */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -35,7 +34,6 @@
       line-height: 1.6;
     }
 
-    /* NAV (mejorado para móvil: colapso de enlaces pero botón visible) */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -44,18 +42,17 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { 
-      display: flex; align-items: center; gap: 10px; 
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
       font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px;
     }
     .nav-logo a { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
     .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
-    
-    /* Enlaces ocultos en móvil, pero en desktop se muestran */
+
     .nav-links { display: flex; gap: 28px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-    
+
     .nav-cta {
       background: var(--green); color: #000; padding: 8px 18px; border-radius: 50px;
       font-weight: 700; font-size: 0.8rem; text-decoration: none; white-space: nowrap;
@@ -63,7 +60,6 @@
     }
     .nav-cta:hover { background: #4ade80; box-shadow: 0 0 20px var(--green-glow); }
 
-    /* HERO RESPONSIVO */
     .hero {
       padding: 150px 20px 70px;
       text-align: center;
@@ -89,14 +85,12 @@
       padding: 0 12px;
     }
 
-    /* CONTENEDOR PRINCIPAL */
     .guide-container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 20px 20px 80px;
     }
 
-    /* SECCIONES (cards) */
     .guide-section {
       background: var(--card);
       border: 1px solid var(--border);
@@ -105,6 +99,12 @@
       margin-bottom: 32px;
       backdrop-filter: blur(6px);
       transition: transform 0.2s ease;
+    }
+
+    /* Acento especial para la sección de desafíos */
+    .guide-section.highlight-section {
+      border-color: rgba(34,197,94,0.25);
+      background: rgba(34,197,94,0.03);
     }
 
     h2 {
@@ -124,6 +124,13 @@
       font-size: 1.6rem;
       flex-shrink: 0;
     }
+    h2 .badge-new {
+      font-size: 0.7rem; font-weight: 700;
+      background: var(--green); color: #000;
+      padding: 3px 10px; border-radius: 50px;
+      letter-spacing: 0.5px;
+      align-self: center;
+    }
 
     h3 {
       font-size: 1.25rem;
@@ -140,7 +147,6 @@
       line-height: 1.5;
     }
 
-    /* PASOS LISTA (mejorada para móvil) */
     .steps-list {
       list-style: none;
       display: flex;
@@ -171,7 +177,6 @@
       font-size: 0.9rem;
     }
 
-    /* GRID DE CARDS INTERNAS (totalmente responsive) */
     .inner-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -185,9 +190,7 @@
       border-radius: 20px;
       transition: background 0.2s;
     }
-    .inner-card:hover {
-      background: rgba(255,255,255,0.05);
-    }
+    .inner-card:hover { background: rgba(255,255,255,0.05); }
     .inner-card h4 {
       font-size: 1.05rem;
       font-weight: 700;
@@ -203,7 +206,25 @@
       line-height: 1.45;
     }
 
-    /* CALLOUT DESTACADO */
+    /* Tags de nivel de juego */
+    .level-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .level-tag {
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid;
+    }
+    .level-tag.beginner  { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: #4ade80; }
+    .level-tag.inter     { background: rgba(250,204,21,0.1);  border-color: rgba(250,204,21,0.3);  color: #facc15; }
+    .level-tag.advanced  { background: rgba(251,146,60,0.1);  border-color: rgba(251,146,60,0.3);  color: #fb923c; }
+    .level-tag.pro       { background: rgba(239,68,68,0.1);   border-color: rgba(239,68,68,0.3);   color: #ef4444; }
+
     .callout {
       background: rgba(34, 197, 94, 0.06);
       border-left: 4px solid var(--green);
@@ -217,14 +238,19 @@
       color: #bef264;
     }
 
-    /* FOOTER RESPONSIVO */
+    .callout.info {
+      background: rgba(59,130,246,0.06);
+      border-left-color: #3b82f6;
+    }
+    .callout.info p { color: #93c5fd; }
+
     footer {
-      border-top: 1px solid var(--border); 
+      border-top: 1px solid var(--border);
       padding: 40px 24px;
-      display: flex; 
-      align-items: center; 
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap; 
+      flex-wrap: wrap;
       gap: 24px;
       background: rgba(8,14,20,0.7);
     }
@@ -235,118 +261,48 @@
     .footer-links a:hover { color: var(--text); }
     footer p { color: var(--muted); font-size: 0.75rem; }
 
-    /* MEDIA QUERIES PRINCIPALES (movil y tablet) */
+    /* RESPONSIVE */
     @media (max-width: 820px) {
-      nav {
-        padding: 12px 20px;
-      }
-      .nav-links {
-        display: none;  /* Ocultar enlace completo en móvil/tablet pequeña */
-      }
-      .hero {
-        padding-top: 120px;
-      }
-      .guide-section {
-        padding: 24px 20px;
-        border-radius: 24px;
-      }
-      h2 .icon {
-        width: 42px;
-        height: 42px;
-        font-size: 1.4rem;
-      }
-      .inner-grid {
-        gap: 18px;
-      }
-      .steps-list li {
-        padding-left: 48px;
-      }
-      .steps-list .badge {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
-        top: 0px;
-      }
-      .callout {
-        padding: 16px 18px;
-      }
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 120px; }
+      .guide-section { padding: 24px 20px; border-radius: 24px; }
+      h2 .icon { width: 42px; height: 42px; font-size: 1.4rem; }
+      .inner-grid { gap: 18px; }
+      .steps-list li { padding-left: 48px; }
+      .steps-list .badge { width: 32px; height: 32px; font-size: 0.8rem; top: 0; }
+      .callout { padding: 16px 18px; }
     }
 
     @media (max-width: 480px) {
-      nav {
-        padding: 10px 16px;
-      }
-      .nav-logo {
-        font-size: 1rem;
-      }
-      .nav-cta {
-        padding: 6px 14px;
-        font-size: 0.7rem;
-      }
-      .hero {
-        padding: 110px 16px 50px;
-      }
-      .guide-container {
-        padding: 12px 16px 60px;
-      }
-      .guide-section {
-        padding: 20px 16px;
-        margin-bottom: 24px;
-      }
-      h2 {
-        margin-bottom: 16px;
-      }
-      h2 .icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
-      }
-      .inner-card {
-        padding: 18px;
-      }
-      .inner-card h4 {
-        font-size: 1rem;
-      }
-      .steps-list {
-        gap: 22px;
-      }
-      .steps-list li {
-        padding-left: 42px;
-      }
-      .steps-list .badge {
-        width: 28px;
-        height: 28px;
-        font-size: 0.7rem;
-      }
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 32px 20px;
-      }
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .footer-links a {
-        white-space: normal;
-        font-size: 0.75rem;
-      }
+      nav { padding: 10px 16px; }
+      .nav-logo { font-size: 1rem; }
+      .nav-cta { padding: 6px 14px; font-size: 0.7rem; }
+      .hero { padding: 110px 16px 50px; }
+      .guide-container { padding: 12px 16px 60px; }
+      .guide-section { padding: 20px 16px; margin-bottom: 24px; }
+      h2 { margin-bottom: 16px; }
+      h2 .icon { width: 36px; height: 36px; font-size: 1.2rem; }
+      .inner-card { padding: 18px; }
+      .inner-card h4 { font-size: 1rem; }
+      .steps-list { gap: 22px; }
+      .steps-list li { padding-left: 42px; }
+      .steps-list .badge { width: 28px; height: 28px; font-size: 0.7rem; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+      .footer-links { flex-wrap: wrap; gap: 12px; }
+      .footer-links a { white-space: normal; font-size: 0.75rem; }
+      .level-tags { gap: 8px; }
+      .level-tag { font-size: 0.75rem; padding: 5px 12px; }
     }
 
-    /* Ajuste adicional para pantallas muy grandes (mejor flujo) */
     @media (min-width: 1400px) {
-      .guide-container {
-        max-width: 1250px;
-      }
-      .inner-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .guide-container { max-width: 1250px; }
+      .inner-grid { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV (manteniendo funcionalidad, enlaces visibles en desktop y ocultos en móvil) -->
 <nav>
   <div class="nav-logo">
     <a href="index.html">
@@ -364,37 +320,47 @@
   <a href="https://play.google.com/apps/testing/com.zonalstation.app" class="nav-cta" target="_blank">Descargar App</a>
 </nav>
 
-<!-- HERO CON TEXTO RESPONSIVO -->
 <header class="hero">
   <h1>Guía para <span class="accent">Propietarios</span></h1>
-  <p class="hero-sub">Administrá tu complejo deportivo, configurá precios por hora, automatizá reservas y recibí pagos digitales con total seguridad.</p>
+  <p class="hero-sub">Administrá tu complejo deportivo, configurá precios por hora, automatizá reservas, conectá equipos y recibí pagos digitales con total seguridad.</p>
 </header>
 
-<!-- CONTENIDO PRINCIPAL (100% responsive) -->
 <main class="guide-container">
 
   <!-- SECCIÓN 1: PANEL DE GESTIÓN -->
   <section class="guide-section">
     <h2><span class="icon">🏟️</span> 1. Panel de Administración (Dashboard)</h2>
-    <p>Zonal Station te brinda una visión completa en tiempo real de la actividad de tu complejo. Ahorrá tiempo telefónico y centralizá toda tu agenda deportiva.</p>
-    
+    <p>Zonal Station te brinda una visión completa en tiempo real de la actividad de tu complejo. Ahorrá tiempo telefónico y centralizá toda tu agenda deportiva desde tu celular.</p>
+
     <div class="inner-grid">
       <div class="inner-card">
         <h4>📅 Agenda y Calendario</h4>
-        <p>Visualizá todos tus turnos por día o semana. Las reservas que entran por la app se bloquean automáticamente en tu grilla.</p>
+        <p>Visualizá todos tus turnos por día o semana. Las reservas que entran por la app se bloquean automáticamente en tu grilla, sin intervención manual.</p>
       </div>
       <div class="inner-card">
         <h4>🔒 Bloqueos Manuales</h4>
-        <p>¿Tus clientes habituales te reservaron por fuera de la app? Creá un bloqueo manual en la agenda para que ese horario deje de estar disponible públicamente de inmediato.</p>
+        <p>¿Tus clientes habituales te reservaron por fuera de la app? Creá un bloqueo manual para que ese horario deje de estar disponible públicamente de inmediato.</p>
       </div>
       <div class="inner-card">
         <h4>📊 Estadísticas e Ingresos</h4>
         <p>Accedé a tus métricas mensuales: ingresos totales generados, índice de ocupación por cancha y las horas pico de mayor demanda.</p>
       </div>
+      <div class="inner-card">
+        <h4>🔔 Notificaciones Instantáneas</h4>
+        <p>Recibís una notificación push en tu celular cada vez que un jugador realiza o cancela una reserva, para que estés siempre al tanto sin tener que revisar la app.</p>
+      </div>
+      <div class="inner-card">
+        <h4>📷 Check-in QR</h4>
+        <p>Cada reserva genera un código QR único. Al momento del partido, podés escanearlo desde tu panel para confirmar la presencia del jugador y cerrar el turno.</p>
+      </div>
+      <div class="inner-card">
+        <h4>⭐ Calificaciones Recibidas</h4>
+        <p>Los jugadores califican tus canchas después de cada partido. Estas reseñas son visibles públicamente y afectan tu posición en el ranking nacional de canchas.</p>
+      </div>
     </div>
   </section>
 
-  <!-- SECCIÓN 2: ESTRATEGIAS DE TARIFAS -->
+  <!-- SECCIÓN 2: TARIFAS -->
   <section class="guide-section">
     <h2><span class="icon">💰</span> 2. Gestión de Tarifas Flexibles</h2>
     <p>Personalizá tus precios según el día, la hora y el nivel de demanda para maximizar los ingresos de tu complejo.</p>
@@ -402,52 +368,124 @@
     <div class="inner-grid">
       <div class="inner-card">
         <h4>🏷️ Tarifas Personalizadas por Hora</h4>
-        <p>Establecé precios fijos diferentes para horarios específicos (ej: $1500 en la tarde y $2000 en la noche). Al desactivar el precio dinámico, los usuarios verán directamente tu precio de lista exacto para esa hora.</p>
+        <p>Establecé precios fijos diferentes para horarios específicos (ej: $1500 a la tarde y $2000 a la noche). Al desactivar el precio dinámico, los usuarios verán tu precio de lista exacto para cada hora.</p>
       </div>
       <div class="inner-card">
         <h4>⚡ Precio Dinámico Inteligente</h4>
-        <p>Activá nuestro algoritmo inteligente para ajustar precios automáticamente según la ocupación real del complejo en las últimas semanas (incrementos del 10% por alta demanda y descuentos en horas de baja actividad).</p>
+        <p>Activá nuestro algoritmo para ajustar precios automáticamente según la ocupación real del complejo en las últimas semanas. Incrementos del 10% por alta demanda y descuentos en horas de baja actividad.</p>
       </div>
       <div class="inner-card">
         <h4>☀️ Happy Hours</h4>
-        <p>Configurá descuentos fijos en tus "horas valle" (horarios de poca concurrencia durante el día) para incentivar reservas tempranas.</p>
+        <p>Configurá descuentos fijos en tus "horas valle" (horarios de poca concurrencia durante el día) para incentivar reservas tempranas y mejorar la ocupación.</p>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN 3: PAGOS Y MERCADO PAGO (callout adicional) -->
+  <!-- SECCIÓN 3: PAGOS -->
   <section class="guide-section">
     <h2><span class="icon">💳</span> 3. Pasarela de Pagos y Confirmaciones</h2>
     <p>Integrá tu cuenta comercial para recibir dinero de forma directa e inmediata, protegiéndote contra inasistencias.</p>
-    
+
     <h3>¿Cómo funciona el flujo financiero?</h3>
     <ol class="steps-list">
       <li>
         <span class="badge">1</span>
-        <strong>Mercado Pago OAuth:</strong>
-        <p>Vinculá tu cuenta de Mercado Pago con un solo click desde tu perfil en la app. No almacenamos tus credenciales; la conexión es directa y segura.</p>
+        <strong>Validación de Complejo:</strong>
+        <p>Para habilitar el cobro digital, el equipo de Zonal Station verifica los datos de tu complejo (RUT empresarial u otra documentación comercial). Una vez aprobado, podés vincular tu cuenta de Mercado Pago desde tu perfil.</p>
       </li>
       <li>
         <span class="badge">2</span>
-        <strong>Cobro de Señas (Deposits):</strong>
-        <p>Configurá una seña obligatoria (monto fijo o porcentaje) para reservar. El jugador abona la seña digitalmente y el saldo restante lo cobra tu complejo en caja al momento del partido.</p>
+        <strong>Mercado Pago OAuth:</strong>
+        <p>Vinculá tu cuenta de Mercado Pago con un solo click desde la app. No almacenamos tus credenciales; la conexión es directa, encriptada y segura.</p>
       </li>
       <li>
         <span class="badge">3</span>
+        <strong>Cobro de Señas (Deposits):</strong>
+        <p>Configurá una seña obligatoria (monto fijo o porcentaje) para reservar. El jugador abona digitalmente y el saldo restante lo cobra tu complejo en caja al momento del partido.</p>
+      </li>
+      <li>
+        <span class="badge">4</span>
         <strong>Intermediación y Comisiones:</strong>
-        <p>El dinero ingresa íntegro a tu cuenta Mercado Pago. El sistema calcula y liquida las comisiones de forma automática. El comprobante del jugador actúa como aval legal frente a cualquier demora de red.</p>
+        <p>El dinero ingresa íntegro a tu cuenta Mercado Pago. El sistema descuenta automáticamente la comisión de plataforma. El comprobante del jugador actúa como aval legal frente a cualquier demora de red.</p>
       </li>
     </ol>
 
     <div class="callout">
-      <p>📌 <strong>Importante:</strong> Los fondos por señas se acreditan en tu cuenta de Mercado Pago al instante. Zonal Station solo aplica una comisión mínima por cada reserva confirmada, transparente en cada operación.</p>
+      <p>📌 <strong>Importante:</strong> Los fondos por señas se acreditan en tu cuenta de Mercado Pago al instante. La comisión de plataforma se liquida de forma automática y transparente en cada operación.</p>
     </div>
   </section>
 
-  <!-- SECCIÓN 4: MARKETING Y VISIBILIDAD (anteriormente 4) -->
+  <!-- SECCIÓN 4: DESAFÍOS ENTRE EQUIPOS (NUEVA) -->
+  <section class="guide-section highlight-section">
+    <h2><span class="icon">🥊</span> 4. Desafíos entre Equipos <span class="badge-new">NUEVO</span></h2>
+    <p>¿Tenés equipos competitivos que entrenan en tus canchas pero no están en la app? Con los <strong>Desafíos de Cancha</strong> podés conectarlos con equipos de la comunidad de Zonal Station y generar partidos reales en tus instalaciones.</p>
+
+    <div class="callout info">
+      <p>💡 <strong>¿Para qué sirve?</strong> Si un equipo que usualmente entrena en tu cancha quiere competir contra la comunidad de la app, vos podés crear el desafío en su nombre. Los equipos registrados en Zonal Station lo verán y podrán aceptarlo.</p>
+    </div>
+
+    <h3>¿Cómo crear un Desafío de Cancha?</h3>
+    <ol class="steps-list">
+      <li>
+        <span class="badge">1</span>
+        <strong>Elegí la cancha y el horario:</strong>
+        <p>Seleccioná cuál de tus canchas y qué fecha/hora estará disponible para el partido. El sistema bloquea automáticamente ese turno en tu agenda.</p>
+      </li>
+      <li>
+        <span class="badge">2</span>
+        <strong>Registrá al equipo externo:</strong>
+        <p>Completá el nombre del equipo que entrenó o usa tu cancha habitualmente. Podés agregar su logo y el color de su camiseta para que sea reconocible por los rivales.</p>
+      </li>
+      <li>
+        <span class="badge">3</span>
+        <strong>Configurá el nivel y rango de edad:</strong>
+        <p>Indicá el nivel de juego del equipo externo para que el matchmaking sea justo. Los equipos de la app filtran desafíos según su propio nivel.</p>
+      </li>
+      <li>
+        <span class="badge">4</span>
+        <strong>Definí si el rival paga o no:</strong>
+        <p>Podés configurar si el equipo rival (el que acepta el desafío desde la app) debe abonar un monto para confirmar el partido, o si el desafío es gratuito para ambas partes.</p>
+      </li>
+      <li>
+        <span class="badge">5</span>
+        <strong>Publicá el desafío:</strong>
+        <p>Una vez publicado, el desafío aparece visible para todos los equipos registrados en Zonal Station. Cuando un equipo lo acepta, recibís una notificación al instante.</p>
+      </li>
+    </ol>
+
+    <h3>Niveles de juego disponibles</h3>
+    <p>Al crear el desafío, seleccionás el nivel del equipo externo para que el rival tenga una competencia equilibrada:</p>
+    <div class="level-tags">
+      <span class="level-tag beginner">🟢 Principiante</span>
+      <span class="level-tag inter">🟡 Intermedio</span>
+      <span class="level-tag advanced">🟠 Avanzado</span>
+      <span class="level-tag pro">🔴 Profesional / Competitivo</span>
+    </div>
+
+    <div class="inner-grid" style="margin-top: 28px;">
+      <div class="inner-card">
+        <h4>🔗 Conecta comunidades</h4>
+        <p>Tus equipos habituales entran al universo competitivo de Zonal Station sin necesidad de registrarse ellos mismos. Vos sos el puente.</p>
+      </div>
+      <div class="inner-card">
+        <h4>📅 Agenda bloqueada automáticamente</h4>
+        <p>Cuando creás el desafío, el horario se bloquea en tu calendario. Si el desafío se cancela o vence sin aceptarse, el turno vuelve a estar disponible.</p>
+      </div>
+      <div class="inner-card">
+        <h4>💰 Control del cobro</h4>
+        <p>Vos decidís si el rival paga digitalmente al aceptar el desafío o si el arreglo económico lo manejás directamente con los equipos el día del partido.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>📌 <strong>Consejo:</strong> Los desafíos con equipo bien identificado (nombre claro, logo y nivel correcto) tienen muchas más chances de ser aceptados rápidamente por la comunidad.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: MARKETING Y VISIBILIDAD -->
   <section class="guide-section">
-    <h2><span class="icon">🎯</span> 4. Marketing, Banners y Spotlight</h2>
-    <p>Aumentá la ocupación de tu complejo deportivo y destaca frente a la competencia de la zona.</p>
+    <h2><span class="icon">🎯</span> 5. Marketing, Banners y Spotlight</h2>
+    <p>Aumentá la ocupación de tu complejo y destacá frente a la competencia de la zona.</p>
 
     <div class="inner-grid">
       <div class="inner-card">
@@ -456,19 +494,24 @@
       </div>
       <div class="inner-card">
         <h4>⭐ Canchas Destacadas (Spotlight)</h4>
-        <p>Destaca tus canchas durante 30 días para que aparezcan en los primeros lugares de las búsquedas y el mapa interactivo de tu zona.</p>
+        <p>Destacá tus canchas durante 30 días para que aparezcan en los primeros lugares de búsquedas y el mapa interactivo de tu zona.</p>
       </div>
       <div class="inner-card">
         <h4>📈 Reportes de Rendimiento</h4>
-        <p>Recibí métricas de visualización de tus campañas: cuántos jugadores vieron tu banner, clics e incremento en reservas durante el período destacado.</p>
+        <p>Accedé a métricas de visualización de tus campañas: cuántos jugadores vieron tu banner, clics e incremento en reservas durante el período destacado.</p>
       </div>
+    </div>
+
+    <div class="callout info">
+      <p>💡 <strong>Tip de visibilidad:</strong> Las canchas con más reseñas positivas aparecen mejor posicionadas en el ranking nacional. Incentivá a tus jugadores a calificar su experiencia después del partido.</p>
     </div>
   </section>
 
-  <!-- SECCIÓN EXTRA: Consejos para propietarios (callout final) -->
+  <!-- SECCIÓN 6: OPTIMIZACIÓN Y SOPORTE -->
   <section class="guide-section" style="margin-bottom: 20px;">
-    <h2><span class="icon">⚙️</span> 5. Optimización y Soporte</h2>
-    <p>¿Necesitas ayuda para configurar tu complejo? Nuestro equipo de soporte está disponible de lunes a sábado para asistirte en la integración de horarios, precios y vinculación de pagos.</p>
+    <h2><span class="icon">⚙️</span> 6. Optimización y Soporte</h2>
+    <p>¿Necesitás ayuda para configurar tu complejo? Nuestro equipo de soporte está disponible de lunes a sábado para asistirte en la integración de horarios, precios y vinculación de pagos.</p>
+
     <div class="inner-grid" style="margin-top: 16px;">
       <div class="inner-card">
         <h4>📞 Asistente Preferente</h4>
@@ -478,11 +521,15 @@
         <h4>📚 Academia Zonal</h4>
         <p>Videotutoriales y guías paso a paso para aprovechar cada función de la plataforma y multiplicar la rentabilidad de tus canchas.</p>
       </div>
+      <div class="inner-card">
+        <h4>🛡️ Seguridad garantizada</h4>
+        <p>Toda tu información financiera y los datos de tus clientes están protegidos con los mismos estándares de seguridad que MercadoPago exige para operar en producción.</p>
+      </div>
     </div>
   </section>
+
 </main>
 
-<!-- FOOTER 100% flexible -->
 <footer>
   <div class="footer-logo">
     <span class="dot"></span>
